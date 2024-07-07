@@ -5,7 +5,7 @@ import cors from "cors";
 app.use(cors());
 
 app.get("/", (req: Request, res: Response) => {
-  res.send("hello world!");
+  res.send("My portfolio server is runing!!!");
 });
 
 export default app;
