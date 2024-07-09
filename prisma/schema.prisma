@@ -13,6 +13,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id String @id @default(uuid())
+  name String 
+  email String @unique
+  password String
+  designation String
+  intruduction String
+  resumeUrl String
+  education String[]
+  experience String[]
+  skills String[]
+  projects String[]
+  contact String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 
 
 
