@@ -21,13 +21,36 @@ model User {
   designation String
   intruduction String
   resumeUrl String
-  education String[]
-  experience String[]
+  education Education[]
+  experience Experience[]
   skills String[]
   projects String[]
   contact String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Education {
+  id String @id @default(uuid())
+  degree String
+  institution String
+  startYear String
+  endYear String
+  userId String
+  user User @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+}
+
+model Experience {
+  id String @id @default(uuid())
+  position String
+  company String
+  startYear String
+  endYear String
+  description String
+  userId String
+  user User @relation(fields: [userId], references: [id])
 }
 
 
