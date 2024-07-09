@@ -18,14 +18,16 @@ model User {
   name String 
   email String @unique
   password String
+  image String?
   designation String
   intruduction String
   resumeUrl String
   education Education[]
   experience Experience[]
-  skills String[]
-  projects String[]
-  contact String?
+  skills Skill[]
+  projects Project[]
+  blogs      Blog[]
+  contacts    Contact?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -51,6 +53,55 @@ model Experience {
   description String
   userId String
   user User @relation(fields: [userId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Skill {
+  id String @id @default(uuid())
+  name String
+  image String?
+  parcentage Int
+  userId String
+  user User @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Project {
+  id String @id @default(uuid())
+  title String
+  description String
+  details String
+  url String
+  startDate String
+  endDate String
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Blog {
+  id          Int      @id @default(autoincrement())
+  title       String
+  content     String
+  published   Boolean  @default(false)
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Contact {
+  id        Int      @id @default(autoincrement())
+  phone     String
+  email     String
+  address   String
+  userId    String @unique
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 
