@@ -21,14 +21,15 @@ model User {
   image String?
   designation String
   role UserRole
-  intruduction String
+  intruduction String?
   resumeUrl String
+  contacts    Contact?
+  
   education Education[]
   experience Experience[]
   skills Skill[]
   projects Project[]
   blogs      Blog[]
-  contacts    Contact?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
