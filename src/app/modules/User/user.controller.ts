@@ -19,6 +19,24 @@ const createAdmin = async (req: Request, res: Response) => {
   }
 };
 
+const getAdmin = async (req: Request, res: Response) => {
+  try {
+    const result = await userService.getAdminFromDB();
+    res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Admin data fetched successfully!",
+      data: result,
+    });
+  } catch (error: any) {
+    res.status(StatusCodes.NOT_FOUND).json({
+      success: false,
+      message: error?.name || "Admin data not found!",
+      error: error,
+    });
+  }
+};
+
 export const userController = {
   createAdmin,
+  getAdmin,
 };

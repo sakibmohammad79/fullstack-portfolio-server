@@ -19,11 +19,15 @@ const createAdmin = async (payload: any) => {
     data: adminData,
   });
 
-  return {
-    adminData,
-  };
+  return adminData;
+};
+
+const getAdminFromDB = async () => {
+  const result = await prisma.user.findMany();
+  return result;
 };
 
 export const userService = {
   createAdmin,
+  getAdminFromDB,
 };

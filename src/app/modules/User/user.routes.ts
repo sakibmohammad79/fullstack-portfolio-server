@@ -5,4 +5,6 @@ const router = Router();
 
 router.post("/", userController.createAdmin);
 
+router.get("/", userController.getAdmin);
+
 export const userRoutes = router;
