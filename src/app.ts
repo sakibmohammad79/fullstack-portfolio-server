@@ -4,6 +4,7 @@ import cors from "cors";
 import router from "./app/routes";
 import { StatusCodes } from "http-status-codes";
 import globalErrorHandler from "./app/middlewares/globalErrorHandler";
+import notFoundHandler from "./app/middlewares/notFoundHandler";
 
 app.use(cors());
 app.use(express.json());
@@ -16,5 +17,7 @@ app.get("/", (req: Request, res: Response) => {
 app.use("/api/v1", router);
 
 app.use(globalErrorHandler);
+
+app.use(notFoundHandler);
 
 export default app;
