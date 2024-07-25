@@ -3,7 +3,6 @@ import prisma from "../../../shared/prisma";
 import ApiError from "../../error/apiError";
 import bcrypt from "bcrypt";
 import jwt, { Secret } from "jsonwebtoken";
-import { UserRole } from "@prisma/client";
 import { jwtHelpers } from "../../../helper/jwtHelper";
 import config from "../../../config";
 
@@ -41,8 +40,15 @@ const loginUserIntoDB = async (payload: {
     config.jwt.access_token_expires_in as string
   );
 
+  const refreshToken = jwtHelpers.generateToken(
+    jwtPayload,
+    config.jwt.refresh_token_secret as Secret,
+    config.jwt.refresh_token_expires_in as string
+  );
+
   return {
     accessToken,
+    refreshToken,
   };
 };
 
