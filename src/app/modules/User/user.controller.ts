@@ -1,38 +1,34 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { userService } from "./user.service";
 import { StatusCodes } from "http-status-codes";
+import sendResponse from "../../../shared/sendResponse";
 
-const createAdmin = async (req: Request, res: Response) => {
+const createAdmin = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const result = await userService.createAdmin(req.body);
-    res.status(StatusCodes.OK).json({
+
+    sendResponse(res, {
+      statusCode: StatusCodes.OK,
       success: true,
       message: "Admin created successfully!",
       data: result,
     });
   } catch (error: any) {
-    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-      success: false,
-      message: error?.name || "Something went wrong, Admin not created!",
-      error: error,
-    });
+    next(error);
   }
 };
 
-const getAdmin = async (req: Request, res: Response) => {
+const getAdmin = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const result = await userService.getAdminFromDB();
-    res.status(StatusCodes.OK).json({
+    sendResponse(res, {
+      statusCode: StatusCodes.OK,
       success: true,
       message: "Admin data fetched successfully!",
       data: result,
     });
   } catch (error: any) {
-    res.status(StatusCodes.NOT_FOUND).json({
-      success: false,
-      message: error?.name || "Admin data not found!",
-      error: error,
-    });
+    next(error);
   }
 };
 

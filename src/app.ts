@@ -1,16 +1,20 @@
-import express, { Application, Request, Response } from "express";
+import express, { Application, NextFunction, Request, Response } from "express";
 const app: Application = express();
 import cors from "cors";
-import { userRoutes } from "./app/modules/User/user.routes";
+import router from "./app/routes";
+import { StatusCodes } from "http-status-codes";
+import globalErrorHandler from "./app/middlewares/globalErrorHandler";
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api/v1/user", userRoutes);
-
 app.get("/", (req: Request, res: Response) => {
   res.send("My portfolio server is runing!!!");
 });
+
+app.use("/api/v1", router);
+
+app.use(globalErrorHandler);
 
 export default app;
