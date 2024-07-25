@@ -2,16 +2,7 @@ import { NextFunction, Request, RequestHandler, Response } from "express";
 import { userService } from "./user.service";
 import { StatusCodes } from "http-status-codes";
 import sendResponse from "../../../shared/sendResponse";
-
-const catchAsync = (fn: RequestHandler) => {
-  return async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      await fn(req, res, next);
-    } catch (err) {
-      next(err);
-    }
-  };
-};
+import catchAsync from "../../../shared/catchAsync";
 
 const createAdmin: RequestHandler = catchAsync(async (req, res) => {
   const result = await userService.createAdmin(req.body);
