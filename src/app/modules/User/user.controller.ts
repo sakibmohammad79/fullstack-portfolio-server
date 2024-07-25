@@ -23,8 +23,19 @@ const getAdmin: RequestHandler = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const updateAdmin: RequestHandler = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await userService.updateAdminIntoDB(req.body, id);
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: "Admin updated successfully!",
+    data: result,
+  });
+});
 
 export const userController = {
   createAdmin,
   getAdmin,
+  updateAdmin,
 };

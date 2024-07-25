@@ -27,7 +27,24 @@ const getAdminFromDB = async () => {
   return result;
 };
 
+const updateAdminIntoDB = async (payload: any, id: string) => {
+  const admin = await prisma.user.findFirstOrThrow({
+    where: {
+      id,
+    },
+  });
+
+  const updateAdmin = await prisma.user.update({
+    where: {
+      email: admin.email,
+    },
+    data: payload,
+  });
+  return updateAdmin;
+};
+
 export const userService = {
   createAdmin,
   getAdminFromDB,
+  updateAdminIntoDB,
 };
