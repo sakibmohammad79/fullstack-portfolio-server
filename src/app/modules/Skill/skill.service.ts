@@ -13,7 +13,7 @@ const getSkillFromDB = async () => {
 };
 
 const updateSkillIntoDB = async (payload: any, id: string) => {
-  const skill = await prisma.skill.findFirstOrThrow({
+  const skill = await prisma.skill.findUniqueOrThrow({
     where: {
       id,
     },
@@ -28,7 +28,7 @@ const updateSkillIntoDB = async (payload: any, id: string) => {
 };
 
 const deleteSkillFromDB = async (id: string) => {
-  const skillData = await prisma.skill.findFirstOrThrow({
+  const skillData = await prisma.skill.findUniqueOrThrow({
     where: {
       id,
     },
