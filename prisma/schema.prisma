@@ -21,7 +21,7 @@ model User {
   image String?
   designation String
   role UserRole
-  intruduction String?
+  introduction String?
   resumeUrl String
   contacts    Contact?
   
