@@ -11,7 +11,7 @@ const createAdmin = async (payload: any) => {
     password: hashedPassword,
     name: admin.name,
     email: admin.email,
-    role: UserRole.admin,
+    role: UserRole.ADMIN,
     designation: admin.designation,
     resumeUrl: admin.resumeUrl,
   };
