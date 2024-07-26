@@ -12,11 +12,11 @@ router.post(
   ProjectController.createProject
 );
 router.patch(
-  "/",
+  "/:id",
   validateRequest(ProjectValidationSchemas.updateProjectValidationSchema),
   ProjectController.updateProject
 );
 
-router.delete("/", ProjectController.deleteProject);
+router.delete("/:id", ProjectController.deleteProject);
 
 export const projectRoutes = router;
