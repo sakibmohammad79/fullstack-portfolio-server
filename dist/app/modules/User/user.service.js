@@ -25,7 +25,7 @@ const createAdmin = (payload) => __awaiter(void 0, void 0, void 0, function* () 
         password: hashedPassword,
         name: admin.name,
         email: admin.email,
-        role: client_1.UserRole.admin,
+        role: client_1.UserRole.ADMIN,
         designation: admin.designation,
         resumeUrl: admin.resumeUrl,
     };
