@@ -90,8 +90,10 @@ model Project {
 
 model Blog {
   id          String      @id @default(uuid())
+  name String
   title       String
   content     String
+  image       String
   published   Boolean  @default(false)
   userId      String
   user        User     @relation(fields: [userId], references: [id])
