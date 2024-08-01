@@ -8,12 +8,16 @@ import auth from "../../middlewares/authGurd";
 const router = Router();
 
 router.get("/", ProjectController.getProject);
+
+router.get("/:id", ProjectController.getSingleProject);
+
 router.post(
   "/",
   auth(UserRole.ADMIN),
   validateRequest(ProjectValidationSchemas.createProjectValidationSchema),
   ProjectController.createProject
 );
+
 router.patch(
   "/:id",
   auth(UserRole.ADMIN),
