@@ -23,6 +23,16 @@ const getBlog: RequestHandler = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const getSingleBlog: RequestHandler = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await BlogService.getSingleBlogFromDB(id);
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: "Single Blog data fetched successfully!",
+    data: result,
+  });
+});
 
 const updateBlog: RequestHandler = catchAsync(async (req, res) => {
   const { id } = req.params;
@@ -51,4 +61,5 @@ export const BlogController = {
   getBlog,
   updateBlog,
   deleteBlog,
+  getSingleBlog,
 };

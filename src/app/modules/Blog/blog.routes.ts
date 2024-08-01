@@ -9,6 +9,8 @@ const router = Router();
 
 router.get("/", BlogController.getBlog);
 
+router.get("/:id", BlogController.getSingleBlog);
+
 router.post(
   "/",
   auth(UserRole.ADMIN),

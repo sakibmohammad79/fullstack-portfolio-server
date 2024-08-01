@@ -18,6 +18,15 @@ const getAllBlogFromDB = async () => {
   return allBlog;
 };
 
+const getSingleBlogFromDB = async (id: string) => {
+  const singleBlog = await prisma.blog.findUniqueOrThrow({
+    where: {
+      id,
+    },
+  });
+  return singleBlog;
+};
+
 const updateBlogIntoDB = async (payload: any, id: string) => {
   const blog = await prisma.blog.findUniqueOrThrow({
     where: {
@@ -53,4 +62,5 @@ export const BlogService = {
   getAllBlogFromDB,
   updateBlogIntoDB,
   deleteBlogFromDB,
+  getSingleBlogFromDB,
 };
