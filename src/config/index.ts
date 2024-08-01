@@ -15,4 +15,4 @@ export default {
 };
 
 //"postgresql://postgres:718278@localhost:5432/my_portfolio?schema=public"
-//"postgresql://postgres.zqvsviriupvsopyewucw:sa79kib..sa79kib..79@aws-0-ap-south-1.pooler.supabase.com:6543/postgres"
+//postgresql://postgres:dwqUMMjhVLCbEIqmySMqKwkkanHlIyKg@roundhouse.proxy.rlwy.net:54905/railway

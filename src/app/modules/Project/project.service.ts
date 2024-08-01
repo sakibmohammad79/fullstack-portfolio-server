@@ -1,7 +1,6 @@
 import prisma from "../../../shared/prisma";
 
 const createProjectIntoDB = async (payload: any) => {
-  console.log(payload);
   const project = await prisma.project.create({
     data: payload,
   });
