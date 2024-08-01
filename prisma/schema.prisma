@@ -81,6 +81,8 @@ model Project {
   details String
   technology String
   url String
+  repoClientUrl String @default("")
+  repoServerUrl String @default("")
   startDate String
   endDate String
   userId      String
