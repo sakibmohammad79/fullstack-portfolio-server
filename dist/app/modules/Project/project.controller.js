@@ -35,6 +35,16 @@ const getProject = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, voi
         data: result,
     });
 }));
+const getSingleProject = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    const result = yield project_service_1.ProjectService.getSingleProjectFromDB(id);
+    (0, sendResponse_1.default)(res, {
+        statusCode: http_status_codes_1.StatusCodes.OK,
+        success: true,
+        message: "Single project data fetched successfully!",
+        data: result,
+    });
+}));
 const updateProject = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const result = yield project_service_1.ProjectService.updateProjectIntoDB(req.body, id);
@@ -60,4 +70,5 @@ exports.ProjectController = {
     getProject,
     updateProject,
     deleteProject,
+    getSingleProject,
 };

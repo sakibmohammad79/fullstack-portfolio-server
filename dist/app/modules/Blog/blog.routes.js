@@ -12,6 +12,7 @@ const client_1 = require("@prisma/client");
 const authGurd_1 = __importDefault(require("../../middlewares/authGurd"));
 const router = (0, express_1.Router)();
 router.get("/", blog_controller_1.BlogController.getBlog);
+router.get("/:id", blog_controller_1.BlogController.getSingleBlog);
 router.post("/", (0, authGurd_1.default)(client_1.UserRole.ADMIN), (0, validateRequest_1.default)(blog_validation_1.BlogValidationSchemas.createBlogValidationSchema), blog_controller_1.BlogController.createBlog);
 router.patch("/:id", (0, authGurd_1.default)(client_1.UserRole.ADMIN), (0, validateRequest_1.default)(blog_validation_1.BlogValidationSchemas.updateBlogValidationSchema), blog_controller_1.BlogController.updateBlog);
 router.delete("/:id", blog_controller_1.BlogController.deleteBlog);

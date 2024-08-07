@@ -29,6 +29,14 @@ const getAllBlogFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
     const allBlog = yield prisma_1.default.blog.findMany();
     return allBlog;
 });
+const getSingleBlogFromDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const singleBlog = yield prisma_1.default.blog.findUniqueOrThrow({
+        where: {
+            id,
+        },
+    });
+    return singleBlog;
+});
 const updateBlogIntoDB = (payload, id) => __awaiter(void 0, void 0, void 0, function* () {
     const blog = yield prisma_1.default.blog.findUniqueOrThrow({
         where: {
@@ -61,4 +69,5 @@ exports.BlogService = {
     getAllBlogFromDB,
     updateBlogIntoDB,
     deleteBlogFromDB,
+    getSingleBlogFromDB,
 };

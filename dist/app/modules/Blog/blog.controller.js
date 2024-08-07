@@ -35,6 +35,16 @@ const getBlog = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0
         data: result,
     });
 }));
+const getSingleBlog = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    const result = yield blog_service_1.BlogService.getSingleBlogFromDB(id);
+    (0, sendResponse_1.default)(res, {
+        statusCode: http_status_codes_1.StatusCodes.OK,
+        success: true,
+        message: "Single Blog data fetched successfully!",
+        data: result,
+    });
+}));
 const updateBlog = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const result = yield blog_service_1.BlogService.updateBlogIntoDB(req.body, id);
@@ -60,4 +70,5 @@ exports.BlogController = {
     getBlog,
     updateBlog,
     deleteBlog,
+    getSingleBlog,
 };

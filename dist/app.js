@@ -10,7 +10,10 @@ const routes_1 = __importDefault(require("./app/routes"));
 const globalErrorHandler_1 = __importDefault(require("./app/middlewares/globalErrorHandler"));
 const notFoundHandler_1 = __importDefault(require("./app/middlewares/notFoundHandler"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
-app.use((0, cors_1.default)());
+app.use((0, cors_1.default)({
+    origin: "https://my-portfolio-client-xi.vercel.app",
+    credentials: true,
+}));
 app.use(express_1.default.json());
 app.use((0, cookie_parser_1.default)());
 app.use(express_1.default.urlencoded({ extended: true }));

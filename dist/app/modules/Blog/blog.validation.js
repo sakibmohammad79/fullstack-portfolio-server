@@ -5,8 +5,10 @@ const zod_1 = require("zod");
 const createBlogValidationSchema = zod_1.z.object({
     body: zod_1.z.object({
         id: zod_1.z.number().int().optional(),
+        name: zod_1.z.string(),
         title: zod_1.z.string(),
         content: zod_1.z.string(),
+        image: zod_1.z.string(),
         published: zod_1.z.boolean().default(false),
         userId: zod_1.z.string(),
         createdAt: zod_1.z.date().optional(),
@@ -16,8 +18,10 @@ const createBlogValidationSchema = zod_1.z.object({
 const updateBlogValidationSchema = zod_1.z.object({
     body: zod_1.z.object({
         id: zod_1.z.number().int().optional(),
+        name: zod_1.z.string().optional(),
         title: zod_1.z.string().optional(),
         content: zod_1.z.string().optional(),
+        image: zod_1.z.string().optional(),
         published: zod_1.z.boolean().default(false).optional(),
         userId: zod_1.z.string().optional(),
         createdAt: zod_1.z.date().optional(),
