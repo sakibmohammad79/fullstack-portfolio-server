@@ -16,5 +16,4 @@ exports.default = {
         refresh_token_expires_in: process.env.REFRESH_TOKEN_EXP,
     },
 };
-//"postgresql://postgres:718278@localhost:5432/my_portfolio?schema=public"
-//postgresql://postgres:dwqUMMjhVLCbEIqmySMqKwkkanHlIyKg@roundhouse.proxy.rlwy.net:54905/railway
+// DATABASE_URL="postgresql://postgres:qIQmCKLSoVUWXNjzLEVjJaAapzwBTtpV@roundhouse.proxy.rlwy.net:31621/railway"
