@@ -11,7 +11,7 @@ router.get("/", userController.getAdmin);
 
 router.post(
   "/",
-  // auth(UserRole.ADMIN),
+  auth(UserRole.ADMIN),
   validateRequest(UserValidationSchemas.createUserValidationSchema),
   userController.createAdmin
 );
