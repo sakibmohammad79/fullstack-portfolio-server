@@ -6,18 +6,13 @@ import globalErrorHandler from "./app/middlewares/globalErrorHandler";
 import notFoundHandler from "./app/middlewares/notFoundHandler";
 import cookieParser from "cookie-parser";
 
+
 app.use(
   cors({
-    origin: "*",
+    origin: "https://my-portfolio-client-xi.vercel.app",
     credentials: true,
   })
 );
-// app.use(
-//   cors({
-//     origin: "https://my-portfolio-client-xi.vercel.app",
-//     credentials: true,
-//   })
-// );
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
